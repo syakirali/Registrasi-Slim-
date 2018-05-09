@@ -1,0 +1,101 @@
+/*
+ * Footer
+ */
+.mastfoot {
+  color: rgba(255, 255, 255, .5);
+}
+
+footer {
+  background: #c12e3c;
+  color: white;
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+a, a:hover {
+  color: white;
+}
+
+body {
+  background-color: #f8f9fa;
+  /* padding-top: 56px; */
+}
+
+.box-shadow {
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+}
+.p-3 {
+    padding: 1rem!important;
+}
+.mb-3, .my-3 {
+    margin-bottom: 1rem!important;
+}
+.mt-3, .my-3 {
+    margin-top: 1rem!important;
+}
+.rounded {
+    border-radius: .25rem!important;
+}
+.bg-white {
+    background-color: #fff!important;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+.masthead {
+  margin-bottom: 2rem;
+}
+
+.masthead-brand {
+  margin-bottom: 0;
+}
+
+.nav-masthead .nav-link {
+  padding: .25rem 0;
+  font-weight: 700;
+  color: rgba(255, 255, 255, .5);
+  background-color: transparent;
+  border-bottom: .25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: rgba(255, 255, 255, .25);
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.nav-masthead .active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+@media (min-width: 48em) {
+  .masthead-brand {
+    float: left;
+  }
+  .nav-masthead {
+    float: right;
+  }
+}
+
+.containerku {
+  border-top:10px solid #c12e3c;
+  border-bottom: 1px solid #c12e3c;
+  border-right: 1px solid #c12e3c;
+  border-left: 1px solid #c12e3c;
+}
+
+button.list-group-item.list-group-item-action {
+    font-size: .875rem;
+    line-height: 0.75;
+}
+
+#pilihan1, #pilihan2, #pilihan3 {
+  background-color: #c12e3c;
+  color: white;
+}
