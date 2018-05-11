@@ -36,6 +36,11 @@ $container['db'] = function ($container) {
     return $capsule;
 };
 
+// Register provider
+$container['flash'] = function () {
+    return new \Slim\Flash\Messages();
+};
+
 $container['cookie'] = function ($container) {
     $request = $container->get('request');
     return new \Slim\Http\Cookies($request->getCookieParams());

@@ -7,6 +7,7 @@ class AuthController
 {
     protected $container;
     protected $view;
+    public static $user;
 
     public function __construct(Container $container) {
         $this->container = $container;
@@ -14,7 +15,7 @@ class AuthController
     }
 
     public function login($request, $response, $args) {
-        if (isset ($_POST['email'])) {
+        if (isset ($_POST['email']) && isset ($_POST['katasandi'])) {
             $user = User::where('email', $_POST['email'])
                         ->where('password', $_POST['katasandi']);
 
@@ -36,6 +37,11 @@ class AuthController
                 return $response->withRedirect('/tampil');
             }
         }
+        return $this->view->render($response, 'login.phtml');
+    }
+
+    public function form($request, $response, $args)
+    {
         return $this->view->render($response, 'login.phtml');
     }
 
