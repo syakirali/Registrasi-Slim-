@@ -45,7 +45,6 @@ $app->get('/lab', function ($request, $response, $args) use ($app) {
 });
 
 $app->get('/clear', function ($request, $response, $args) {
-  session_start();
   session_unset();
   setcookie('ppmb_unair_token', "", time()-100000, "/", $_SERVER['HTTP_HOST'], 0, 1);
   setcookie('ppmb_unair_email', "", time()-100000, "/", $_SERVER['HTTP_HOST'], 0, 1);
@@ -71,4 +70,9 @@ $app->get('/bar', function ($req, $res, $args) {
     // Get the first message from a specific key
     $test = $this->flash->getFirstMessage('Test');
     print_r($test);
+});
+
+$app->get('/log', function ($req, $res, $args) {
+    $this->logger->warning('foo');
+    $this->logger->error('bar');
 });

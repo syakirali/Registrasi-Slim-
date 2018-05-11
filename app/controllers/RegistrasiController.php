@@ -3,7 +3,6 @@ namespace App\Controllers;
 use App\Prodi;
 use App\Pendaftar;
 use Slim\Container;
-use Slim\Router;
 
 class RegistrasiController
 {
@@ -22,46 +21,51 @@ class RegistrasiController
     */
     public function regis($request, $response, $args)
     {
-        // $pesan = "asfasdfs asdfkasfh";
-        // $error = true;
-        $pesan;
         if (isset($_POST['nik'])) {
             $pendaftar = Pendaftar::find($_POST['nik']);
-            // echo "<pre>";
-            // dd($pendaftar);
-            // echo "</pre>";
-            // die('end');
             if ($pendaftar) {
               $this->flash->addMessage('hasil', [
                 'pesan' => 'NIK' . $pendaftar->nik . ' sudah ada di database !', 'error' => true
               ]);
             } else {
-                $pendaftar = new Pendaftar;
-                $pendaftar->nik = $_POST['nik'];
-                $pendaftar->nama = $_POST['nama'];
-                $pendaftar->tempat_lahir = $_POST['tempat_lahir'];
-                $pendaftar->tanggal_lahir = $_POST['tanggal_lahir'];
-                $pendaftar->asal_sekolah = $_POST['asal_sekolah'];
-                $pendaftar->jenis_kelamin = $_POST['jenis_kelamin'];
-                $pendaftar->agama = $_POST['agama'];
-                $pendaftar->no_seluler = $_POST['no_seluler'];
-                $pendaftar->tlp_rumah = $_POST['tlp_rumah'];
-                $pendaftar->email = $_POST['email'];
-                $pendaftar->alamat = $_POST['alamat'];
-                $pendaftar->pilihan1 = $_POST['pil1'];
-                $pendaftar->pilihan2 = $_POST['pil2'];
-                $pendaftar->pilihan3 = $_POST['pil3'];
                 try {
-                    $pendaftar->save();
-                    $this->flash->addMessage('hasil', [
-                      'pesan' => $pendaftar->nama . ' berhasil didaftarkan !', 'error' => false
-                    ]);
+                    if (!is_numeric($_POST['nik'])) {
+                        $this->flash->addMessage('hasil', [
+                          'pesan' => 'nik ' . $_POST['nik'] . ' tidak valid !', 'error' => true
+                        ]);
+                    } else if (!is_numeric($_POST['no_seluler'])) {
+                        $this->flash->addMessage('hasil', [
+                          'pesan' => 'nik ' . $_POST['no_seluler'] . ' tidak valid !', 'error' => true
+                        ]);
+                    } else if (!is_numeric($_POST['telp_rumah'])) {
+                        $this->flash->addMessage('hasil', [
+                          'pesan' => 'nik ' . $_POST['telp_rumah'] . ' tidak valid !', 'error' => true
+                        ]);
+                    } else {
+                        $pendaftar = new Pendaftar;
+                        $pendaftar->nik = $_POST['nik'];
+                        $pendaftar->nama = $_POST['nama'];
+                        $pendaftar->tempat_lahir = $_POST['tempat_lahir'];
+                        $pendaftar->tanggal_lahir = $_POST['tanggal_lahir'];
+                        $pendaftar->asal_sekolah = $_POST['asal_sekolah'];
+                        $pendaftar->jenis_kelamin = $_POST['jenis_kelamin'];
+                        $pendaftar->agama = $_POST['agama'];
+                        $pendaftar->no_seluler = $_POST['no_seluler'];
+                        $pendaftar->tlp_rumah = $_POST['tlp_rumah'];
+                        $pendaftar->email = $_POST['email'];
+                        $pendaftar->alamat = $_POST['alamat'];
+                        $pendaftar->pilihan1 = $_POST['pil1'];
+                        $pendaftar->pilihan2 = $_POST['pil2'];
+                        $pendaftar->pilihan3 = $_POST['pil3'];
+                        $pendaftar->save();
+                        $this->flash->addMessage('hasil', [
+                          'pesan' => $pendaftar->nama . ' berhasil didaftarkan !', 'error' => false
+                        ]);
+                    }
                 } catch (Exception $e) {
                     $this->flash->addMessage('hasil', [
-                      'pesan' => 'gagal mendaftarkan ' . $pendaftar->nama . ' !', 'error' => true
+                      'pesan' => 'gagal mendaftarkan ' . $_POST['nama'] . ' !', 'error' => true
                     ]);
-                    $pesan = 'gagal mendaftarkan ' . $pendaftar->nama . ' !';
-                    $error = true;
                 }
             }
         }
@@ -81,21 +85,12 @@ class RegistrasiController
 
     public function test($request, $response, $args)
     {
-        // $router = new Router;
         // echo "<pre>";
         // print_r($app);
         // echo "</pre>";
         // print_r($router->getRoutes());
         // die();
-        // $url = $router->pathFor('/registrasi', ['databaru' => true]);
-        // return $response->withStatus(302)->withHeader('Location', $url);
-        // die();
-        // return $response;
         return $response->withRedirect("/registrasi", 'registrasi', 200);
-        // die();
-        // $this->form($request, $response, $args);
-        // return $response->withRedirect('/');
-        // return $container->redirect('/');
     }
 }
 

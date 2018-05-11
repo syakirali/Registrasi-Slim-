@@ -12,6 +12,7 @@ class AuthController
     public function __construct(Container $container) {
         $this->container = $container;
         $this->view = $this->container->get('view');
+        $this->logger = $this->container->get('logger');
     }
 
     public function login($request, $response, $args) {
@@ -31,17 +32,19 @@ class AuthController
                 } else {
                   $_SESSION['ppmb_unair_token'] = $token;
                   $_SESSION['ppmb_unair_email'] = $user->email;
-                  print_r($_SESSION);
-                  die();
                 }
                 return $response->withRedirect('/tampil');
             }
+            $this->logger->warning('email:' . $_POST['email'] . ', katasandi:' . $_POST['katasandi']);
         }
         return $this->view->render($response, 'login.phtml');
     }
 
     public function form($request, $response, $args)
     {
+        if (self::getUser()) {
+            return $response->withStatus(302)->withHeader('Location', '/tampil');
+        }
         return $this->view->render($response, 'login.phtml');
     }
 
