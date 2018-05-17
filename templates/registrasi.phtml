@@ -50,7 +50,7 @@
           <div class="form-group row">
             <label for="form_nik" class="col-md-5 col-form-table">NIK</label>
             <div class="col-md-7">
-              <input id="form_nik" type="text" class="form-control form-control-sm" placeholder="NIK" name="nik" value="" required>
+              <input id="form_nik" type="text" class="form-control form-control-sm" placeholder="NIK" name="nik" value="{{ data_lama['nik'] }}" required>
             </div>
           </div>
 
@@ -59,7 +59,7 @@
               <label for="form_nama">Nama</label>
             </div>
             <div class="col-md-7">
-              <input id="form_nama" type="text" class="form-control form-control-sm" placeholder="Nama" name="nama" value="" required>
+              <input id="form_nama" type="text" class="form-control form-control-sm" placeholder="Nama" name="nama" value="{{ data_lama['nama'] }}" required>
             </div>
           </div>
 
@@ -68,10 +68,10 @@
               <label for="form_tempat_lahir">Tempat, tanggal Lahir</label>
             </div>
             <div class="col-md-3">
-              <input id="form_tempat_lahir" type="text" class="form-control form-control-sm" placeholder="Tempat Lahir" name="tempat_lahir" value="" required>
+              <input id="form_tempat_lahir" type="text" class="form-control form-control-sm" placeholder="Tempat Lahir" name="tempat_lahir" value="{{ data_lama['tempat_lahir'] }}" required>
             </div>
             <div class="col-md-4">
-              <input id="form_tanggal_lahir" type="date" class="form-control form-control-sm" placeholder="Tanggal Lahir" name="tanggal_lahir" value="" required>
+              <input id="form_tanggal_lahir" type="date" class="form-control form-control-sm" placeholder="Tanggal Lahir" name="tanggal_lahir" value="{{ data_lama['tanggal_lahir'] }}" required>
             </div>
           </div>
 
@@ -80,7 +80,7 @@
               <label for="form_asal_sekolah">Asal Sekolah</label>
             </div>
             <div class="col-md-7">
-              <input id="form_asal_sekolah" type="text" class="form-control form-control-sm" placeholder="Asal Sekolah" name="asal_sekolah" value="" required>
+              <input id="form_asal_sekolah" type="text" class="form-control form-control-sm" placeholder="Asal Sekolah" name="asal_sekolah" value="{{ data_lama['asal_sekolah'] }}" required>
             </div>
           </div>
 
@@ -90,9 +90,9 @@
             </div>
             <div class="col-md-7">
               <select id="form_jenis_kelamin"class="custom-select form-control-sm" name="jenis_kelamin">
-                <option selected>Pilih</option>
-                <option value="l">Laki-laki</option>
-                <option value="p">Perempuan</option>
+                <option>Pilih</option>
+                <option value="l" {{ data_lama['jenis_kelamin'] == 'l'? "selected" : "" }}>Laki-laki</option>
+                <option value="p" {{ data_lama['jenis_kelamin'] == 'p'? "selected" : "" }}>Perempuan</option>
               </select>
             </div>
           </div>
@@ -103,13 +103,13 @@
             </div>
             <div class="col-md-7">
               <select id="form_agama" class="custom-select form-control-sm" name="agama">
-                <option selected>Pilih</option>
-                <option value="islam">Islam</option>
-                <option value="katolik">Katolik</option>
-                <option value="katolik">Kristen</option>
-                <option value="hindu">Hindu</option>
-                <option value="budha">Budha</option>
-                <option value="konghucu">Konghucu</option>
+                <option>Pilih</option>
+                <option value="islam" {{ data_lama['agama'] == 'islam'? "selected" : "" }}>Islam</option>
+                <option value="katolik" {{ data_lama['agama'] == 'katolik'? "selected" : "" }}>Katolik</option>
+                <option value="Kristen" {{ data_lama['agama'] == 'Kristen'? "selected" : "" }}>Kristen</option>
+                <option value="hindu" {{ data_lama['agama'] == 'hindu'? "selected" : "" }}>Hindu</option>
+                <option value="budha" {{ data_lama['agama'] == 'budha'? "selected" : "" }}>Budha</option>
+                <option value="konghucu" {{ data_lama['agama'] == 'konghucu'? "selected" : "" }}>Konghucu</option>
               </select>
             </div>
           </div>
@@ -121,7 +121,7 @@
             <div class="col-md-7">
               <div class="input-group">
                 <span type="text" class="input-group-text" style="padding: .25rem .5rem;font-size: .875rem;line-height: 1.5;border-radius: .2rem;">+62</span>
-                <input type="number" name="no_seluler" class="form-control form-control-sm" id="form_seluler" placeholder="Nomor Seluler" aria-describedby="inputGroupPrepend" required>
+                <input type="number" name="no_seluler" value="{{ data_lama['no_seluler'] }}" class="form-control form-control-sm" id="form_seluler" placeholder="Nomor Seluler" aria-describedby="inputGroupPrepend" required>
               </div>
             </div>
           </div>
@@ -133,7 +133,7 @@
             <div class="col-md-7">
               <div class="input-group">
                 <span type="text" class="input-group-text" style="padding: .25rem .5rem;font-size: .875rem;line-height: 1.5;border-radius: .2rem;">0</span>
-                <input type="number" name="tlp_rumah" class="form-control form-control-sm" id="form_telp_rumah" placeholder="Nomor Seluler" aria-describedby="inputGroupPrepend" required>
+                <input type="number" name="tlp_rumah" value="{{ data_lama['tlp_rumah'] }}" class="form-control form-control-sm" id="form_telp_rumah" placeholder="Nomor Seluler" aria-describedby="inputGroupPrepend" required>
               </div>
             </div>
           </div>
@@ -143,7 +143,7 @@
               <label for="form_email">Email</label>
             </div>
             <div class="col-md-7">
-              <input type="email" name="email" id="form_email" class="form-control form-control-sm" placeholder="Email" value="" required>
+              <input type="email" name="email" value="{{ data_lama['email'] }}" id="form_email" class="form-control form-control-sm" placeholder="Email" required>
             </div>
           </div>
 
@@ -152,7 +152,7 @@
               <label for="form_alamat">Alamat</label>
             </div>
             <div class="col-md-7">
-              <textarea type="text" id="form_alamat" class="form-control form-control-sm" placeholder="Alamat" name="alamat" value="" required></textarea>
+              <textarea type="text" id="form_alamat" class="form-control form-control-sm" placeholder="Alamat" name="alamat" required>{{ data_lama['alamat'] }}</textarea>
             </div>
           </div>
         </div>
@@ -165,8 +165,8 @@
               <label class="pilihan1" for="form_pilihan1">Pilihan Pertama</label>
             </div>
             <div class="col-md-7">
-              <input type="text" id="form_pilihan1" placeholder="pilih" class="form-control input-prodi form-control-sm" name="pilihan1" readonly required>
-              <input type="hidden" name="pil1" id="pil1" value="">
+              <input type="text" id="form_pilihan1" placeholder="pilih" class="form-control input-prodi form-control-sm" name="pilihan1" value="{{ data_lama['pilihan1'] }}" readonly required>
+              <input type="hidden" name="pil1" id="pil1" value="{{ data_lama['pil1'] }}">
             </div>
           </div>
 
@@ -175,8 +175,8 @@
               <label class="pilihan2" for="form_pilihan2">Pilihan Kedua</label>
             </div>
             <div class="col-md-7">
-              <input type="text" id="form_pilihan2" class="form-control input-prodi form-control-sm" name="pilihan2" placeholder="pilih" readonly required>
-              <input type="hidden" name="pil2" id="pil2" value="">
+              <input type="text" id="form_pilihan2" class="form-control input-prodi form-control-sm" name="pilihan2" value="{{ data_lama['pilihan2'] }}" placeholder="pilih" readonly required>
+              <input type="hidden" name="pil2" id="pil2" value="{{ data_lama['pil2'] }}">
 
               <div id="master-pilihan" style="display:none">
                 <div class="list-group d-flex mt-3" id="list-tab" role="tablist" style="flex-direction:row">
@@ -191,7 +191,15 @@
                     <div class="tab-pane fade show" id="datas1" role="tabpanel" aria-labelledby="list-home-list">
                       <div class="list-group">
                         {% for p in s1 %}
-                            <button type='button' idprodi='{{p.id}}' class='list-group-item list-group-item-action piljur'>S1 - {{ p.nama|e }} {{ p.fakultas == 16 ? ' - PDD Banyuwangi' : '' }}</button>
+                            {% if (p.id == data_lama['pil1']) %}
+                                <button type='button' idprodi='{{p.id}}' id="pilihan1" class='list-group-item list-group-item-action piljur'>S1 - {{ p.nama|e }} {{ p.fakultas == 16 ? ' - PDD Banyuwangi' : '' }}</button>
+                            {% elseif (p.id == data_lama['pil2']) %}
+                                <button type='button' idprodi='{{p.id}}' id="pilihan2" class='list-group-item list-group-item-action piljur'>S1 - {{ p.nama|e }} {{ p.fakultas == 16 ? ' - PDD Banyuwangi' : '' }}</button>
+                            {% elseif (p.id == data_lama['pil3']) %}
+                                <button type='button' idprodi='{{p.id}}' id="pilihan3" class='list-group-item list-group-item-action piljur'>S1 - {{ p.nama|e }} {{ p.fakultas == 16 ? ' - PDD Banyuwangi' : '' }}</button>
+                            {% else %}
+                                <button type='button' idprodi='{{p.id}}' class='list-group-item list-group-item-action piljur'>S1 - {{ p.nama|e }} {{ p.fakultas == 16 ? ' - PDD Banyuwangi' : '' }}</button>
+                            {% endif %}
                         {% endfor %}
                       </div>
                     </div>
@@ -223,8 +231,8 @@
               <label class="pilihan3" for="form_pilihan3">Pilihan Ketiga</label>
             </div>
             <div class="col-md-7">
-              <input type="text" id="form_pilihan3" placeholder="pilih" class="form-control input-prodi form-control-sm" data-toggle="tooltip" data-html="true" title="Anda sudah memilih prodi ini di pilihan ketiga" name="pilihan3" readonly required>
-              <input type="hidden" name="pil3" id="pil3" value="">
+              <input type="text" id="form_pilihan3" placeholder="pilih" class="form-control input-prodi form-control-sm" name="pilihan3" value="{{ data_lama['pilihan3'] }}" readonly required>
+              <input type="hidden" name="pil3" id="pil3" value="{{ data_lama['pil3'] }}">
             </div>
           </div>
 

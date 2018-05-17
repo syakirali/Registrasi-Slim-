@@ -92,10 +92,14 @@ body {
 
 button.list-group-item.list-group-item-action {
     font-size: .875rem;
-    line-height: 0.75;
+    line-height: 1.75;
 }
 
 #pilihan1, #pilihan2, #pilihan3 {
   background-color: #c12e3c;
   color: white;
+}
+
+.piljur{
+  padding: .25rem 1.25rem;
 }
